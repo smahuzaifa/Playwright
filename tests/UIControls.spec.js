@@ -27,12 +27,13 @@ test.only("Child Window test", async ({browser})=>
 {
     const context = await browser.newContext();
     const page = await context.newPage();
+    const userName = page.locator('#username');
     await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
     const documentLink = page.locator("[href*='documents-request']");
     //If a new page is opened, then we must inform the computer
     //Whenever we want a set of step to run in parallel
     const [newPage] = await Promise.all([
-            context.waitForEvent('page'),
+            context.waitForEvent("page"),
             documentLink.click(),
         ])
         //Copying the context of the original page
@@ -41,4 +42,12 @@ test.only("Child Window test", async ({browser})=>
     //Asyncronously = parallel, we have to use Promise
      const text = await newPage.locator(".red").textContent();
      console.log(text);
+     const arrayText = text.split('@');
+     const domain = arrayText[1].split(' ')[0];
+     console.log(domain);
+     await userName.fill(domain);
+    //  await page.pause();
+     console.log("The input in the field is " + await userName.inputValue());
+     //containText() is used to get static text, i.e textContent() returns the inner text of the element
+     //and inputValue() method gets that value that has been typed in dynamically by the user or the pgm
 });
