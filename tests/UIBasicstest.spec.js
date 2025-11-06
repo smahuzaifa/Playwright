@@ -14,7 +14,7 @@ test('Second playright test', async ()=> //Anonymous function is one that has no
 //whenever we use await we have to use async, they go hand in hand
 //await only gets avtivated when the function is marked async.
 //To use a browser
-test.only('Third playright test', async ({browser})=> //Wrapped in curly braces to be recognised as 
+test('Third playright test', async ({browser})=> //Wrapped in curly braces to be recognised as 
 // playwright fixture. Otherwise it will be considered as a string
 {
     const context = await browser.newContext();
