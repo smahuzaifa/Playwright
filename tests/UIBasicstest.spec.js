@@ -37,8 +37,13 @@ test.only('Third playright test', async ({browser})=> //Wrapped in curly braces 
     await userName.fill(""), //This clears the previously entered value in the field
     await userName.fill("rahulshettyacademy");
     await signIn.click();
-    console.log(await page.locator(".card-body a").first().textContent());
-    console.log(await page.locator(".card-body a").nth(1).textContent());
+    const cardTitle = page.locator(".card-body a");
+    console.log(await page.locator(".card-body a").first().textContent()); //iPhone X
+    console.log(await page.locator(".card-body a").nth(1).textContent()); //Samsung Note 8
+    //To grab text of all products in a list format in single step
+    const allTitles = await cardTitle.allTextContents();
+    console.log(allTitles);
+
 });
 //By using .only we can explicitly ask it to run just one test which has only
 //Another way to do the same as above
