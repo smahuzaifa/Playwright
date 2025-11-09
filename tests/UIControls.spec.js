@@ -1,6 +1,6 @@
 const {test, expect} = require('@playwright/test');
 const { text } = require('stream/consumers');
-test ('UI Controls',async ({browser,page})=>
+test.only ('UI Controls',async ({browser,page})=>
 {
     const userName = page.locator('#username');
     const signIn = page.locator("#signInBtn");
@@ -20,10 +20,10 @@ test ('UI Controls',async ({browser,page})=>
     expect(await page.locator("#terms").isChecked()).toBeFalsy();
     //Await should be performed based on where in the brackets or scope if an action is performed.
     //To automate if a text or link is blinking. HTML has a blinkinText class
-    const documentLink = page.locator(".blinkinText");
+    const documentLink = page.locator("[href*='documents-request']");
     await expect(documentLink).toHaveAttribute("class","blinkingText");
 });
-test.only("Child Window test", async ({browser})=>
+test("Child Window test", async ({browser})=>
 {
     const context = await browser.newContext();
     const page = await context.newPage();
