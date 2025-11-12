@@ -1,2 +1,3 @@
 npx playwright install: to install playwright
+npx playwright test test/testfilename.js --headed: to run a particular test case in headed mode
 npx playwright test --ui : to run the Ui runner to execute test
