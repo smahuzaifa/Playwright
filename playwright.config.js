@@ -17,7 +17,7 @@ import { off } from 'process';
 export default defineConfig({
   testDir: './tests',
   reporter: 'html',
-  timeout: 100000, /* Overall test timeout setting, which specifies the maximum time allowed for the 
+  timeout: 50000, /* Overall test timeout setting, which specifies the maximum time allowed for the 
   entire test to complete, including all actions, fixtures, and hooks. If the test exceeds this timeout 
   (30 seconds here), Playwright aborts the test with a timeout error.*/
   expect: {

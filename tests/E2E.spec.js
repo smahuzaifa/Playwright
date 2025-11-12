@@ -36,8 +36,6 @@ element becomes visible on the page.
     const count = await products.count();
     console.log(count);
     const productName = "ZARA COAT 3";
-    // const orderIdatcart = await page.locator(".itemNumber").textContent();
-    // console.log(orderIdatcart);
     for(let i=0;i<count;++i){
         if(await products.nth(i).evaluate(node => node.closest('.card-body').querySelector('h5')?.textContent)
 ){
@@ -94,11 +92,29 @@ element becomes visible on the page.
     await page.locator(".order-summary").first().waitFor("visible");
     //Final Page
     const orderIatLast = await page.locator(".box .ng-star-inserted label").textContent();
-    console.log(orderIatLast);
+    console.log("The order ID mentioned on the checkout page is "+orderIatLast);
     const topBar = await page.locator("[routerlink*='dashboard']").allTextContents();
     console.log(topBar);
     //Moving to the order page
     const orders =await page.locator("[routerlink*='dashboard']").nth(2).click();
     await expect(page.locator(".container.table-responsive.py-5")).toBeVisible();
+    console.log("The order page has opened");
+    const orderRows = page.locator("tbody tr");
+    await orderRows.first().waitFor({ state: 'visible', timeout: 5000 });
+    const orderRowsCount = await orderRows.count();
+    for( let i=0; i< orderRowsCount; i++){
+        await orderRows.first().waitFor({ state: 'visible', timeout: 5000 });
+        const orderID2 = await orderRows.nth(i).locator("th").textContent();
+        console.log(orderID2);
+        if(orderIatLast.includes(orderID2)){
+            await orderRows.nth(i).locator("button").first().click();
+            console.log("If conditions has matched")
+            break;
+        }
+        else console.log("If condition has failed");
+    }
+    const finalOrderID = await page.locator(".col-text.-main").toBeVisible().textContent();
+    expect(orderIatLast.includes(finalOrderID)).toBeTruthy;
+
     
 });
