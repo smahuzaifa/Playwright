@@ -1,2 +1,0 @@
-npx playwright install: to install playwright
-npx playwright test --ui : to run the Ui runner to execute test
