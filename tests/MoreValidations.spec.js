@@ -13,9 +13,9 @@ test ("More validations",async ({page})=>
     await expect(hideShowBox).toBeHidden(); //Asserts if the element is hidden
 
     await page.getByRole("button",{name:'Confirm'}).click();
-    //Handling dialog box or popup
+    // 
     page.on("dialog",dialog => dialog.accept());
-    //to press cancel we will use the dismiss(): dialog.accept()
+    //to press cancel we will use the dismiss(): dialog.dismiss()
 
     //Hovering
     await page.locator("#mousehover").hover();
