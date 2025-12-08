@@ -7,13 +7,17 @@ test ("E2E automation", async({page}) =>
     await page.getByPlaceholder("email@example.com").fill(email);
     await page.getByPlaceholder("enter your passsword").fill("Test@1234");
     await page.getByRole("button",{name:'Login'}).click();
+    
     await page.waitForLoadState('networkidle');
     await page.locator(".container div").first().waitFor();
+
     await page.locator(".card-body").filter({hasText:"ZARA COAT 3"})
     .getByRole("button",{name:' Add To Cart'}).click();
     await page.getByRole("listitem").getByRole("button",{name:'Cart'}).click();
+
     await page.waitForLoadState('networkidle');
     await page.locator(".cart").first().waitFor();
+
     await expect(page.getByText("ZARA COAT 3")).toBeVisible();
     await page.getByRole("button",{name:'Checkout'}).click();
     await expect(page.getByText("ZARA COAT 3")).toBeVisible();

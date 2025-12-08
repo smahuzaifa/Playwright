@@ -12,4 +12,4 @@ test.only ('Client App Login',async ({browser,page})=>
     //Alternate way would be to wait for the locator
     await page.locator(".card-body b").first().waitFor();
     console.log(await page.locator(".card-body b").allTextContents());
-});
+}); 

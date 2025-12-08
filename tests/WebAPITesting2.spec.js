@@ -23,8 +23,7 @@ test('End to end post login',async ({browser})=>
     await page.waitForLoadState('networkidle');
     await page.locator(".container div").first().waitFor();
 
-    await page.locator(".card-body").filter({hasText:"ZARA COAT 3"})
-    .getByRole("button",{name:' Add To Cart'}).click();
+    await page.locator(".card-body").filter({hasText:"ZARA COAT 3"}).getByRole("button",{name:' Add To Cart'}).click();
     await page.getByRole("listitem").getByRole("button",{name:'Cart'}).click();
 
     await page.waitForLoadState('networkidle');
