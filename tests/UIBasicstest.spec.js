@@ -47,7 +47,7 @@ test('Third playright test', async ({browser})=> //Wrapped in curly braces to be
 });
 //By using .only we can explicitly ask it to run just one test which has only
 //Another way to do the same as above
-test('Fourth playright test', async ({browser,page})=> //Automatic context and fresh page ism opened using
+test('Fourth playright test', async ({browser,page})=> //Automatic context and fresh page is opened using
 //default context.
 {
     await page.goto("https://google.com");
