@@ -7,10 +7,7 @@ class LoginPage{
     }
     async goToLoginPage(){
         await this.page.context().clearCookies();
-        await this.page.goto("https://rahulshettyacademy.com/client", {
-            waitUntil: "load",
-            timeout: 60000 
-        });
+        await this.page.goto("https://rahulshettyacademy.com/client");
     }
     async signIn(userName, password){
         await this.userName.fill(userName);

@@ -1,4 +1,4 @@
-class Dashboard{
+class DashboardPage{
     constructor(page){
         this.page=page;
         this.products = page.locator(".card-body");
@@ -21,4 +21,4 @@ class Dashboard{
         }
         }
 }
-module.exports = {Dashboard}
+module.exports = {DashboardPage};
