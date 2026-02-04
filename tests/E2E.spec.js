@@ -1,4 +1,4 @@
-const {test, expect} = require ('@playwright/test');
+ ;
 const { clear } = require('console'); //Clears the terminal for cleaner output
 test ("E2E automation", async({browser}) =>
 {

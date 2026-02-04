@@ -27,10 +27,10 @@ export default defineConfig({
        within this time, it will fail.*/
   },
   use:{
-    browserName : 'firefox',
+    browserName : 'chromium',
     headless: true,
     screenshot: 'only-on-failure',
-    trace: 'retain-on-failure'
+    trace: 'on'
   }
 });
 

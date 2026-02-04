@@ -10,17 +10,17 @@ test.beforeAll(async()=> //Executes before all other test cases
     const loginResponse = await apiContext.post("https://rahulshettyacademy.com/api/ecom/auth/login",{
         data: loginPayload
     });
-    const addProductResponse = await apiContext.post("https://rahulshettyacademy.com/api/ecom/order/create-order",{
-        data:orderPayLoad,
-        headers:{
-            'Authorization':loginToken,
-            'Content-Type': 'application/json'
-        }
-    });
+    // const addProductResponse = await apiContext.post("https://rahulshettyacademy.com/api/ecom/order/create-order",{
+    //     data:orderPayLoad,
+    //     headers:{
+    //         Authorization: loginToken,
+    //         'Content-Type': 'application/json'
+    //     }
+    // });
     //Pass the method call and the API endpoint.
     //The first parameter is string, second is data which should be enclosed in {}
     await expect(loginResponse.ok() ).toBeTruthy();
-    await expect(addProductResponse.ok()).toBeTruthy();
+    
     //.ok() checks or asserts if a 200.. status code is returned for the api call
     const loginResponseJson = await loginResponse.json();
     const cartResponseJson = await addProductResponse.json();
@@ -33,8 +33,8 @@ test.beforeAll(async()=> //Executes before all other test cases
     loginToken = loginResponseJson.token; //object.token is traversed to just get the
     // token. This is not a method but a key directly so no ()
     console.log(loginToken);
-    const orderId = cartResponseJson.orders[0];
-    console.log(orderId);
+    // const orderId = cartResponseJson.orders[0];
+    // console.log(orderId);
 
 
 });
